@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Repositories\Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EHR.DAL\EHR.DAL.csproj" />
+    <ProjectReference Include="..\EHR.Utilities\EHR.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>
