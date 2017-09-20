@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EHR.API.Controllers
+namespace EHR.API.Inventory.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

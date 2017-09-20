@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  ehr.api.inventory:
+    image: ehr.api.inventory
+    build:
+      context: ./EHR.API.Inventory
+      dockerfile: Dockerfile

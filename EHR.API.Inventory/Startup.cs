@@ -8,19 +8,15 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
-using EHR.DAL.Entities;
-using EHR.DAL.Repositories;
-using EHR.BLL.UnitOfWork;
-using EHR.BLL.UnitOfWork.Interfaces;
-using EHR.DAL.Repositories.Interfaces;
 using EHR.DAL.Inventory.Data;
-using EHR.BLL.Inventory.UnitOfWork;
+using EHR.BLL.UnitOfWork.Interfaces;
+using EHR.BLL.Inventory.UnitOfWork.Interfaces;
 using EHR.DAL.Inventory.Repositories.Interfaces;
 using EHR.DAL.Inventory.Repositories;
-using EHR.BLL.Inventory.UnitOfWork.Interfaces;
+using EHR.BLL.Inventory.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 
-namespace EHR.API
+namespace EHR.API.Inventory
 {
     public class Startup
     {

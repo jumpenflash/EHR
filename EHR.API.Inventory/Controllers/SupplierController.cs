@@ -14,7 +14,7 @@ using EHR.BLL.UnitOfWork.Interfaces;
 using EHR.DAL.Inventory.Entities;
 using EHR.BLL.Inventory.UnitOfWork.Interfaces;
 
-namespace EHR.API.Controllers
+namespace EHR.API.Inventory.Controllers
 {
     [Produces("application/json")]
     [Route("api/Suppliers")]

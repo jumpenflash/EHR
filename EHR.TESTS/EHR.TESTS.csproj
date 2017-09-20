@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EHR.API\EHR.API.csproj" />
     <ProjectReference Include="..\EHR.BLL\EHR.BLL.csproj" />
     <ProjectReference Include="..\EHR.DAL\EHR.DAL.csproj" />
   </ItemGroup>
