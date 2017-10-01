@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.10
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR.BLL", "EHR.BLL\EHR.BLL.csproj", "{642663CD-A73A-4729-9C60-1E69215C1C4C}"
 EndProject
@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR", "EHR\EHR.csproj", "{8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR.DAL.Inventory", "EHR.DAL.Inventory\EHR.DAL.Inventory.csproj", "{FFDD5967-96CF-4467-B1B8-A7C268C169E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR.DAL.User", "EHR.DAL.User\EHR.DAL.User.csproj", "{506FEC28-159D-4C16-BC5B-512219DB1C67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR.DAL.Admin", "EHR.DAL.User\EHR.DAL.Admin.csproj", "{506FEC28-159D-4C16-BC5B-512219DB1C67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - UI", "0 - UI", "{29CE2621-9589-47E8-8208-B12F80EE23CE}"
 EndProject
@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Tests", "5 - Tests", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR.BLL.Inventory", "EHR.BLL.Inventory\EHR.BLL.Inventory.csproj", "{B2E0CA67-C280-4812-A3A4-26784AB71A0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EHR.API.Inventory", "EHR.API.Inventory\EHR.API.Inventory.csproj", "{2276D55B-DCF2-4E4D-A189-68506233ABF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EHR.API.Inventory", "EHR.API.Inventory\EHR.API.Inventory.csproj", "{2276D55B-DCF2-4E4D-A189-68506233ABF5}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{435441D7-1E7F-4C90-A0CD-389C79C185F0}"
 EndProject

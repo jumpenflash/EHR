@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EHR.DAL.User.Entities
+namespace EHR.DAL.Admin.Entities
 {
     public class User : EditableEntity
     {
@@ -16,7 +16,7 @@ namespace EHR.DAL.User.Entities
 
         public ICollection<EmergancyContact> EmergancyContacts { get; set; }
         public ICollection<Address> Addresses { get; set; }
-        public ICollection<Role> Roles { get; set; }
+        public ICollection<Membership> Memberships { get; set; }
         //public ICollection<UserAttribute> Attributes { get; set; }
     }
 
@@ -47,13 +47,20 @@ namespace EHR.DAL.User.Entities
     {
     }
 
+    public class Membership : ReadOnlyEntity
+    {
+        public User User { get; set; }
+        public Role Role { get; set; }
+    }
+
     public class Role : EditableEntity
     {
-        ICollection<Permission> Permissions { get; set; }
+        public ICollection<Permission> Permissions { get; set; }
     }
 
     public class Permission : TypeEntity
     {
+        public Role Role { get; set; }
         public Action Action { get; set; }
         public Module Module { get; set; }
     }

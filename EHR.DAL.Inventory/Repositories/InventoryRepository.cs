@@ -10,13 +10,13 @@ using EHR.DAL.Repositories;
 using EHR.DAL.Inventory.Entities;
 using EHR.DAL.Inventory.Repositories.Interfaces;
 using EHR.DAL.Inventory.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace EHR.DAL.Inventory.Repositories
 {
     public class InventoryRepository<T> : Repository<T>, IInventoryRepository<T> where T : UniqueEntity
     {
-        public InventoryRepository(InventoryContext Context)
-            : base(Context)
+        public InventoryRepository(DbContext context) : base(context)
         {
         }
 
