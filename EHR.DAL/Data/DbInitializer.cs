@@ -34,11 +34,21 @@ namespace EHR.DAL.Data
 
             var users = new User[]
             {
-            new User{ FirstName ="System", LastName = "Administratir", UserName="sysadmin"}
+                new User{ FirstName ="System", LastName = "Administrator", UserName="sysadmin"}
             };
             foreach (User s in users)
             {
                 context.Users.Add(s);
+            }
+            context.SaveChanges();
+
+            var Roles = new Role[]
+            {
+                new Role{ Name ="System Administrators" }
+            };
+            foreach (Role s in Roles)
+            {
+                context.Roles.Add(s);
             }
             context.SaveChanges();
         }

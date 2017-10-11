@@ -5,13 +5,8 @@ using System.Text;
 
 namespace EHR.DAL.Entities
 {
-    public class AuthToken
+    public class AuthToken : TokenEntity
     {
-        public Guid AuthTokenId { get; set; }
-        public DateTime Expires { get; set; }
-        public DateTime CreatedDate { get; set; }
-
-        public User CreatedByUser { get; set; }
     }
 
     public class User : ManagedEntity

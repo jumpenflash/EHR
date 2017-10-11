@@ -28,6 +28,12 @@ namespace EHR.DAL.Entities.Base
         public User ModifiedByUser { get; set; }
     }
 
+    public abstract class TokenEntity : ManagedEntity
+    {
+        public Guid TokenId { get; set; }
+        public DateTime ExpirationDate { get; set; }
+    }
+
     public abstract class HistoricalEntity : UnmanagedEntity
     {
         [Column(Order = 99)]

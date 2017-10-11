@@ -13,6 +13,7 @@ namespace EHR.DAL.Data
             DbInitializer<BaseContext>.Instance.Initialize(this);
         }
 
+        public DbSet<AuthToken> AuthTokens { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RoleMembership> RoleMemberships { get; set; }
@@ -21,6 +22,7 @@ namespace EHR.DAL.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AuthToken>().ToTable("AuthToken");
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Role>().ToTable("Role");
             modelBuilder.Entity<RoleMembership>().ToTable("Memberships");
