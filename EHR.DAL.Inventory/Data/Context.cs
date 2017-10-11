@@ -1,4 +1,5 @@
-﻿using EHR.DAL.Inventory.Entities;
+﻿using EHR.DAL.Data;
+using EHR.DAL.Inventory.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,11 +7,11 @@ using System.Text;
 
 namespace EHR.DAL.Inventory.Data
 {
-    public class InventoryContext : DbContext
+    public class InventoryContext : BaseContext
     {
-        public InventoryContext(DbContextOptions<InventoryContext> options) : base(options)
+        public InventoryContext(DbContextOptions<DbContext> options) : base(options)
         {
-            DbInitializer.Initialize(this);
+            InventoryInitializer.Instance.Initialize(this);
         }
 
         public DbSet<Formula> Formulas { get; set; }
@@ -21,6 +22,8 @@ namespace EHR.DAL.Inventory.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Formula>().ToTable("Formula");
             modelBuilder.Entity<Herb>().ToTable("Herb");
             modelBuilder.Entity<Stationary>().ToTable("Stationary");

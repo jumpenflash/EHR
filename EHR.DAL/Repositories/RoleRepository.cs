@@ -7,22 +7,20 @@ using System.Linq.Expressions;
 using System.Linq;
 using EHR.DAL.Repositories.Interfaces;
 using EHR.DAL.Repositories;
-using EHR.DAL.Admin.Entities;
-using EHR.DAL.Admin.Repositories.Interfaces;
-using EHR.DAL.Admin.Data;
+using EHR.DAL.Data;
 
-namespace EHR.DAL.Admin.Repositories
+namespace EHR.DAL.Repositories
 {
-    public class RoleRepository : AdminRepository<Role>, IRoleRepository
+    public class RoleRepository : Repository<Role, BaseContext>, IRoleRepository
     {
-        public RoleRepository(AdminContext Context)
+        public RoleRepository(BaseContext Context)
             : base(Context)
         {
         }
 
         public void AddPermissionToRole(Permission permission, int roleId)
         {
-            var role = AdminContext.Roles.Where(r => r.Id == roleId).FirstOrDefault();
+            var role = Context.Roles.Where(r => r.Id == roleId).FirstOrDefault();
 
             if (role != null)
                 role.Permissions.Add(permission);
@@ -30,21 +28,21 @@ namespace EHR.DAL.Admin.Repositories
 
         public void AddUserToRole(User user, int roleId)
         {
-            var role = AdminContext.Roles.Where(r => r.Id == roleId).FirstOrDefault();
+            var role = Context.Roles.Where(r => r.Id == roleId).FirstOrDefault();
 
             if (role != null)
             {
-                Membership m = new Membership();
+                RoleMembership m = new RoleMembership();
                 m.User = user;
                 m.Role = role;
 
-                AdminContext.Memberships.Add(m);
+                Context.RoleMemberships.Add(m);
             }
         }
 
         public IEnumerable<Role> GetAllByUserId(int userId)
         {
-            var results = from m in AdminContext.Memberships
+            var results = from m in Context.RoleMemberships
                           where m.User.Id == userId
                           select m.Role;
 

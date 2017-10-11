@@ -7,19 +7,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using EHR.DAL.Entities.Base;
+using EHR.DAL.Data;
 
 namespace EHR.DAL.Admin.Repositories
 {
-    public class AdminRepository<T> : Repository<T>, IAdminRepository<T> where T : UniqueEntity
+    public class AdminRepository<T> : Repository<T, AdminContext>, IAdminRepository<T> where T : UniqueEntity
     {
-        public AdminRepository(DbContext context) : base(context)
+        public AdminRepository(AdminContext context) : base(context)
         {
-        }
-
-        public AdminContext AdminContext
-        {
-            get { return Context as AdminContext; }
-            set { Context = value; }
         }
     }
 }

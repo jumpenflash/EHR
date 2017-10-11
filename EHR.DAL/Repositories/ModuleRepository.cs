@@ -7,15 +7,13 @@ using System.Linq.Expressions;
 using System.Linq;
 using EHR.DAL.Repositories.Interfaces;
 using EHR.DAL.Repositories;
-using EHR.DAL.Admin.Entities;
-using EHR.DAL.Admin.Repositories.Interfaces;
-using EHR.DAL.Admin.Data;
+using EHR.DAL.Data;
 
-namespace EHR.DAL.Admin.Repositories
+namespace EHR.DAL.Repositories
 {
-    public class ModuleRepository : AdminRepository<Module>, IModuleRepository
+    public class ModuleRepository : Repository<Module, BaseContext>, IModuleRepository
     {
-        public ModuleRepository(AdminContext Context)
+        public ModuleRepository(BaseContext Context)
             : base(Context)
         {
         }

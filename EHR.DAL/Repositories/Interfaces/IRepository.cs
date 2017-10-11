@@ -1,4 +1,5 @@
 ﻿using EHR.DAL.Entities;
+using EHR.DAL.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

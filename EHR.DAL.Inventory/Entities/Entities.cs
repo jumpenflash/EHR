@@ -1,11 +1,12 @@
 ﻿using EHR.DAL.Entities;
+using EHR.DAL.Entities.Base;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace EHR.DAL.Inventory.Entities
 {
-    public class InventoryItem : EditableEntity
+    public class InventoryItem : ManagedEntity
     {
         public string SKU { get; set; }
         public decimal PricePerUnit { get; set; }
@@ -47,7 +48,7 @@ namespace EHR.DAL.Inventory.Entities
 
     }
 
-    public class Supplier : EditableEntity
+    public class Supplier : ManagedEntity
     {
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
@@ -56,7 +57,7 @@ namespace EHR.DAL.Inventory.Entities
         public ICollection<SupplierAddress> Addresses { get; set; }
     }
 
-    public class SupplierAddress : EditableEntity
+    public class SupplierAddress : ManagedEntity
     {
         public Address Address { get; set; }
         public SupplierAddressType SupplierAddressType { get; set; }

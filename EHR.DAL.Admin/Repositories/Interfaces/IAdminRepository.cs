@@ -1,4 +1,5 @@
 ﻿using EHR.DAL.Entities;
+using EHR.DAL.Entities.Base;
 using EHR.DAL.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;

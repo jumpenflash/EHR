@@ -1,4 +1,5 @@
 ﻿using EHR.DAL.Entities;
+using EHR.DAL.Entities.Base;
 using EHR.DAL.Inventory.Entities;
 using EHR.DAL.Repositories.Interfaces;
 using System;

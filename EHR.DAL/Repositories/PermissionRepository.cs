@@ -7,22 +7,20 @@ using System.Linq.Expressions;
 using System.Linq;
 using EHR.DAL.Repositories.Interfaces;
 using EHR.DAL.Repositories;
-using EHR.DAL.Admin.Entities;
-using EHR.DAL.Admin.Repositories.Interfaces;
-using EHR.DAL.Admin.Data;
+using EHR.DAL.Data;
 
-namespace EHR.DAL.Admin.Repositories
+namespace EHR.DAL.Repositories
 {
-    public class PermissionRepository : AdminRepository<Permission>, IPermissionRepository
+    public class PermissionRepository : Repository<Permission, BaseContext>, IPermissionRepository
     {
-        public PermissionRepository(AdminContext Context)
+        public PermissionRepository(BaseContext Context)
             : base(Context)
         {
         }
 
         public IEnumerable<Permission> GetAllByRoleId(int roleId)
         {
-            var results = from p in AdminContext.Permissions
+            var results = from p in Context.Permissions
                           where p.Role.Id == roleId
                           select p;
 

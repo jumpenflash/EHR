@@ -1,50 +1,129 @@
-﻿using System;
+﻿using EHR.DAL.Entities.Base;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EHR.DAL.Entities
 {
-    public abstract class UniqueEntity
+    public class AuthToken
     {
-        [Key, Column(Order = 0)]
-        public int Id { get; set; }
-    }
-
-    public abstract class ReadOnlyEntity : UniqueEntity
-    {
-        [Column(Order = 100)]
-        public int CreatedByUserId { get; set; }
-        [Column(Order = 101)]
+        public Guid AuthTokenId { get; set; }
+        public DateTime Expires { get; set; }
         public DateTime CreatedDate { get; set; }
+
+        public User CreatedByUser { get; set; }
     }
 
-    public abstract class EditableEntity : ReadOnlyEntity
+    public class User : ManagedEntity
     {
-        [Column(Order = 102)]
-        public int LastModifiedByUserId { get; set; }
-        [Column(Order = 103)]
-        public DateTime LastModifiedDate { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
+        public string DOB { get; set; }
+
+        public ICollection<RoleMembership> RoleMemberships { get; set; }
+        public ICollection<UserStatusHistory> UserStatusHistory { get; set; }
     }
 
-    public abstract class HistoricalEntity : ReadOnlyEntity
+    public class UserEmail : ManagedEntity
     {
-        [Column(Order = 99)]
-        public bool MostRecent { get; set; }
+        public bool Primary { get; set; }
+
+        public User User { get; set; }
+        public Email Email { get; set; }
+        public UserEmailType UserEmailType { get; set; }
     }
 
-    public abstract class TypeEntity : UniqueEntity
+    public enum UserEmailType
     {
-        [Column(Order = 2)]
+        Personal = 1,
+        Work = 2,
+        Other = 3
+    }
+
+    public class UserAddress : ManagedEntity
+    {
+        public bool Primary { get; set; }
+
+        public User User { get; set; }
+        public Address Address { get; set; }
+        public UserAddressType UserAddressType { get; set; }
+    }
+
+    public enum UserAddressType
+    {
+        Home = 1,
+        Work = 2,
+        Other = 3
+    }
+
+    public class UserStatusHistory : HistoricalEntity
+    {
+        public User User { get; set; }
+        public UserStatusType UserStatusType { get; set; }
+    }
+
+    public class UserStatusType : TypeEntity
+    {
+    }
+
+    public class RoleMembership : ManagedEntity
+    {
+        public User User { get; set; }
+        public Role Role { get; set; }
+    }
+
+    public class Role : ManagedEntity
+    {
         public string Name { get; set; }
-        [Column(Order = 3)]
-        public int SortOrder { get; set; }
-        [Column(Order = 4)]
-        public bool Active { get; set; }
+
+        public ICollection<RoleMembership> Memberships { get; set; }
+        public ICollection<Permission> Permissions { get; set; }
     }
 
-    public class Address : EditableEntity
+    public class Permission : ManagedEntity
+    {
+        public Role Role { get; set; }      //These users
+        public Action Action { get; set; }  //can perform this action
+        public Scope Scope { get; set; }    //within these bounds
+        public Module Module { get; set; }  //to these objects
+    }
+
+    public class Module : TypeEntity
+    {
+    }
+
+    public class Action : TypeEntity
+    {
+    }
+
+    public class Scope : TypeEntity
+    {
+    }
+
+    public class SystemSetting : ManagedEntity
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public string Default { get; set; }
+
+        public SystemSettingType SystemSettingType { get; set; }
+        public Module Module { get; set; }
+
+        public ICollection<SystemSettingOption> SystemSettingOptions { get; set; }
+    }
+
+    public class SystemSettingType : TypeEntity
+    {
+    }
+
+    public class SystemSettingOption : ManagedEntity
+    {
+        public SystemSetting SystemSetting { get; set; }
+    }
+
+    public class Address : ManagedEntity
     {
         public string Street1 { get; set; }
         public string Street2 { get; set; }
@@ -52,5 +131,10 @@ namespace EHR.DAL.Entities
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Country { get; set; }
+    }
+
+    public class Email : ManagedEntity
+    {
+        public string EmailAddress { get; set; }
     }
 }

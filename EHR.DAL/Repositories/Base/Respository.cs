@@ -7,14 +7,16 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using EHR.DAL.Repositories.Interfaces;
 using EHR.DAL.Entities;
+using EHR.DAL.Entities.Base;
+using EHR.DAL.Data;
 
 namespace EHR.DAL.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : UniqueEntity
+    public abstract class Repository<T, C> : IRepository<T> where T : UniqueEntity where C : BaseContext
     {
-        protected DbContext Context { get; set; }
+        protected C Context { get; set; }
 
-        public Repository(DbContext context)
+        public Repository(C context)
         {
             Context = context;
         }

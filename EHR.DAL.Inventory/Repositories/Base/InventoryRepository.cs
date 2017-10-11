@@ -11,19 +11,15 @@ using EHR.DAL.Inventory.Entities;
 using EHR.DAL.Inventory.Repositories.Interfaces;
 using EHR.DAL.Inventory.Data;
 using Microsoft.EntityFrameworkCore;
+using EHR.DAL.Entities.Base;
+using EHR.DAL.Data;
 
 namespace EHR.DAL.Inventory.Repositories
 {
-    public class InventoryRepository<T> : Repository<T>, IInventoryRepository<T> where T : UniqueEntity
+    public class InventoryRepository<T> : Repository<T, InventoryContext>, IInventoryRepository<T> where T : UniqueEntity
     {
-        public InventoryRepository(DbContext context) : base(context)
+        public InventoryRepository(InventoryContext context) : base(context)
         {
-        }
-
-        public InventoryContext InventoryContext
-        {
-            get { return Context as InventoryContext; }
-            set { Context = value; }
         }
     }
 }

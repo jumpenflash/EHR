@@ -7,36 +7,34 @@ using System.Linq.Expressions;
 using System.Linq;
 using EHR.DAL.Repositories.Interfaces;
 using EHR.DAL.Repositories;
-using EHR.DAL.Admin.Entities;
-using EHR.DAL.Admin.Repositories.Interfaces;
-using EHR.DAL.Admin.Data;
+using EHR.DAL.Data;
 
-namespace EHR.DAL.Admin.Repositories
+namespace EHR.DAL.Repositories
 {
-    public class UserRepository : AdminRepository<User>, IUserRepository
+    public class UserRepository : Repository<User, BaseContext>, IUserRepository
     {
-        public UserRepository(AdminContext Context)
+        public UserRepository(BaseContext Context)
             : base(Context)
         {
         }
 
         public void AddRoleToUser(Role role, int userId)
         {
-            var user = AdminContext.Users.Where(u => u.Id == userId).FirstOrDefault();
+            var user = Context.Users.Where(u => u.Id == userId).FirstOrDefault();
 
             if (user != null)
             {
-                Membership m = new Membership();
+                RoleMembership m = new RoleMembership();
                 m.User = user;
                 m.Role = role;
 
-                AdminContext.Memberships.Add(m);
+                Context.RoleMemberships.Add(m);
             }
         }
 
         public IEnumerable<User> GetAllByRoleId(int roleId)
         {
-            var results = from m in AdminContext.Memberships
+            var results = from m in Context.RoleMemberships
                           where m.Role.Id == roleId
                           select m.User;
 

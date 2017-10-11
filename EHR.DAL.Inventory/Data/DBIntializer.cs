@@ -1,15 +1,14 @@
-﻿using EHR.DAL.Inventory.Entities;
+﻿using EHR.DAL.Data;
+using EHR.DAL.Inventory.Entities;
 using System;
 using System.Linq;
 
 namespace EHR.DAL.Inventory.Data
 {
-    public static class DbInitializer
+    public class InventoryInitializer : DbInitializer<InventoryContext>
     {
-        public static void Initialize(InventoryContext context)
+        public override void Initialize(InventoryContext context)
         {
-            context.Database.EnsureCreated();
-
             // Look for any students.
             if (context.Suppliers.Any())
             {
