@@ -118,14 +118,22 @@ namespace EHR.DAL.Entities
         public SystemSetting SystemSetting { get; set; }
     }
 
+    public class Country : ManagedEntity
+    {
+    }
+
+    public class State_Province : ManagedEntity
+    {
+    }
+
     public class Address : ManagedEntity
     {
         public string Street1 { get; set; }
         public string Street2 { get; set; }
         public string City { get; set; }
-        public string State { get; set; }
+        public State_Province State { get; set; }
         public string ZipCode { get; set; }
-        public string Country { get; set; }
+        public Country Country { get; set; }
     }
 
     public class Email : ManagedEntity

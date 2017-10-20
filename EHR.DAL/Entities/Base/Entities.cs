@@ -8,7 +8,7 @@ namespace EHR.DAL.Entities.Base
 {
     public abstract class UniqueEntity
     {
-        [Key, Column(Order = 0)]
+        [Key, Column(Order = 1)]
         public int Id { get; set; }
     }
 
@@ -50,4 +50,5 @@ namespace EHR.DAL.Entities.Base
         [Column(Order = 4)]
         public bool Active { get; set; }
     }
+
 }
